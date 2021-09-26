@@ -7,6 +7,7 @@ import FooterSettings from './FooterSettings';
 
 const Footer = () => {
     const [selected, setSelected] = useState<number>(1);
+
     return (
         <HStack
             bg="light.50"

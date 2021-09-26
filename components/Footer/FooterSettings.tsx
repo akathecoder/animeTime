@@ -1,6 +1,9 @@
 import React from 'react';
 import { Text, Icon, Center, Pressable } from 'native-base';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../utilities/NavigationTypes';
 
 interface FooterSettingsProps {
     selected: number;
@@ -10,18 +13,30 @@ interface FooterSettingsProps {
     index: number;
 }
 
+type settingsScreenProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'Settings'
+>;
+
 const FooterSettings: React.FC<FooterSettingsProps> = ({
     selected,
     setSelected,
     index,
 }: FooterSettingsProps) => {
+    const navigation = useNavigation<settingsScreenProp>();
+
+    const handleOnPress = () => {
+        setSelected(index);
+        navigation.navigate('Settings');
+    };
+
     return (
         <Pressable
             cursor="pointer"
             opacity={selected === index ? 1 : 0.5}
             py="2"
             flex={1}
-            onPress={() => setSelected(index)}
+            onPress={handleOnPress}
         >
             <Center>
                 <Icon

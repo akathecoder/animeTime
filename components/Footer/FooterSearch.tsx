@@ -1,6 +1,9 @@
 import React from 'react';
 import { Text, Icon, Center, Pressable } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../utilities/NavigationTypes';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 interface FooterSearchProps {
     selected: number;
@@ -10,18 +13,30 @@ interface FooterSearchProps {
     index: number;
 }
 
+type searchScreenProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'Search'
+>;
+
 const FooterSearch: React.FC<FooterSearchProps> = ({
     selected,
     setSelected,
     index,
 }: FooterSearchProps) => {
+    const navigation = useNavigation<searchScreenProp>();
+
+    const handleOnPress = () => {
+        setSelected(index);
+        navigation.navigate('Search');
+    };
+
     return (
         <Pressable
             cursor="pointer"
             opacity={selected === index ? 1 : 0.5}
             py="2"
             flex={1}
-            onPress={() => setSelected(index)}
+            onPress={handleOnPress}
         >
             <Center>
                 <Icon

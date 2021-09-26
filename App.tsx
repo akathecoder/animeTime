@@ -7,8 +7,10 @@ import Home from './screens/Home';
 import Login from './screens/Login';
 import Search from './screens/Search';
 import Settings from './screens/Settings';
+import { RootStackParamList } from './utilities/NavigationTypes';
 
-const Stack = createNativeStackNavigator();
+const Stack =
+    createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
     return (
