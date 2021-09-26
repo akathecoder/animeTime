@@ -6,13 +6,12 @@ import {
     Text,
 } from 'native-base';
 import React from 'react';
-import Footer from '../components/Footer';
 
 export default function Home() {
     return (
         <Box flex={1} safeArea>
             <ScrollView flex={1}>
-                <Heading>Anime Time</Heading>
+                <Heading>Home</Heading>
                 <Text fontSize="xl">
                     Lorem ipsum, dolor sit amet consectetur
                     adipisicing elit. Voluptates quasi dicta
@@ -223,7 +222,7 @@ export default function Home() {
                     tempore! Modi dignissimos sed veritatis.
                 </Text>
             </ScrollView>
-            <Footer />
+
             <StatusBar style="auto" />
         </Box>
     );

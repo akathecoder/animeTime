@@ -6,13 +6,12 @@ import {
     Text,
 } from 'native-base';
 import React from 'react';
-import Footer from '../components/Footer';
 
 const Settings = () => {
     return (
         <Box flex={1} safeArea>
             <ScrollView flex={1}>
-                <Heading>Anime Time</Heading>
+                <Heading>Settings</Heading>
                 <Text fontSize="xl">
                     Lorem ipsum, dolor sit amet consectetur
                     adipisicing elit. Voluptates quasi dicta
@@ -223,7 +222,7 @@ const Settings = () => {
                     tempore! Modi dignissimos sed veritatis.
                 </Text>
             </ScrollView>
-            <Footer />
+
             <StatusBar style="auto" />
         </Box>
     );
