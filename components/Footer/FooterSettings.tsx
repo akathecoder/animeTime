@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, Icon, Center, Pressable } from 'native-base';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../utilities/NavigationTypes';
@@ -41,20 +41,12 @@ const FooterSettings: React.FC<FooterSettingsProps> = ({
             <Center>
                 <Icon
                     mb={1}
-                    as={
-                        <MaterialCommunityIcons
-                            name={
-                                selected === index
-                                    ? 'account'
-                                    : 'account-outline'
-                            }
-                        />
-                    }
+                    as={<MaterialIcons name="settings" />}
                     color="light.700"
                     size="sm"
                 />
                 <Text color="light.700" fontSize="12">
-                    Account
+                    Settings
                 </Text>
             </Center>
         </Pressable>
