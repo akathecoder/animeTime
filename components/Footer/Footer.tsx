@@ -1,26 +1,12 @@
-import React from 'react';
-import {
-    NativeBaseProvider,
-    Box,
-    Text,
-    Heading,
-    VStack,
-    FormControl,
-    Input,
-    Link,
-    Button,
-    Icon,
-    HStack,
-    Center,
-    Pressable,
-} from 'native-base';
-import {
-    MaterialCommunityIcons,
-    MaterialIcons,
-} from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { HStack } from 'native-base';
+
+import FooterHome from './FooterHome';
+import FooterSearch from './FooterSearch';
+import FooterSettings from './FooterSettings';
 
 const Footer = () => {
-    const [selected, setSelected] = React.useState(1);
+    const [selected, setSelected] = useState<number>(1);
     return (
         <HStack
             bg="light.50"
@@ -28,81 +14,23 @@ const Footer = () => {
             safeAreaBottom
             shadow={10}
         >
-            <Pressable
-                cursor="pointer"
-                opacity={selected === 0 ? 1 : 0.5}
-                py="3"
-                flex={1}
-                onPress={() => setSelected(0)}
-            >
-                <Center>
-                    <Icon
-                        mb="1"
-                        as={
-                            <MaterialCommunityIcons
-                                name={
-                                    selected === 0
-                                        ? 'home'
-                                        : 'home-outline'
-                                }
-                            />
-                        }
-                        color="light.700"
-                        size="sm"
-                    />
-                    <Text color="light.700" fontSize="12">
-                        Home
-                    </Text>
-                </Center>
-            </Pressable>
+            <FooterHome
+                selected={selected}
+                setSelected={setSelected}
+                index={0}
+            />
 
-            <Pressable
-                cursor="pointer"
-                opacity={selected === 1 ? 1 : 0.5}
-                py="2"
-                flex={1}
-                onPress={() => setSelected(1)}
-            >
-                <Center>
-                    <Icon
-                        mb="1"
-                        as={<MaterialIcons name="search" />}
-                        color="light.700"
-                        size="sm"
-                    />
-                    <Text color="light.700" fontSize="12">
-                        Search
-                    </Text>
-                </Center>
-            </Pressable>
+            <FooterSearch
+                selected={selected}
+                setSelected={setSelected}
+                index={1}
+            />
 
-            <Pressable
-                cursor="pointer"
-                opacity={selected === 2 ? 1 : 0.5}
-                py="2"
-                flex={1}
-                onPress={() => setSelected(2)}
-            >
-                <Center>
-                    <Icon
-                        mb={1}
-                        as={
-                            <MaterialCommunityIcons
-                                name={
-                                    selected === 2
-                                        ? 'account'
-                                        : 'account-outline'
-                                }
-                            />
-                        }
-                        color="light.700"
-                        size="sm"
-                    />
-                    <Text color="light.700" fontSize="12">
-                        Account
-                    </Text>
-                </Center>
-            </Pressable>
+            <FooterSettings
+                selected={selected}
+                setSelected={setSelected}
+                index={2}
+            />
         </HStack>
     );
 };
