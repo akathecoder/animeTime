@@ -30,7 +30,6 @@ const TabBar = ({
                     const event = navigation.emit({
                         type: 'tabPress',
                         target: route.key,
-                        // TODO: Look here
                         canPreventDefault: true,
                     });
 
