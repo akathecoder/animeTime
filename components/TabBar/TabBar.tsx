@@ -51,6 +51,7 @@ const TabBar = ({
 
                 return (
                     <TabIcon
+                        key={index}
                         isFocused={isFocused}
                         label={label}
                         onLongPress={onLongPress}

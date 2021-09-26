@@ -6,7 +6,7 @@ import { NativeBaseProvider } from 'native-base';
 import Home from './screens/Home';
 import Search from './screens/Search';
 import Settings from './screens/Settings';
-import TabBar from './components/TabBar/TabBar';
+import TabBar from './components/TabBar';
 
 const Tab = createBottomTabNavigator();
 
