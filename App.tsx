@@ -27,14 +27,23 @@ export default function App() {
                     <Stack.Screen
                         name="Login"
                         component={Login}
+                        options={{
+                            headerShown: false,
+                        }}
                     />
                     <Stack.Screen
                         name="Search"
                         component={Search}
+                        options={{
+                            headerShown: false,
+                        }}
                     />
                     <Stack.Screen
                         name="Settings"
                         component={Settings}
+                        options={{
+                            headerShown: false,
+                        }}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
