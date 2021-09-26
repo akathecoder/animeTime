@@ -1,6 +1,9 @@
 import React from 'react';
 import { Text, Center, Pressable } from 'native-base';
-import { LabelPosition } from '@react-navigation/bottom-tabs/lib/typescript/src/types';
+import {
+    LabelPosition,
+    BottomTabNavigationOptions,
+} from '@react-navigation/bottom-tabs/lib/typescript/src/types';
 import { getIcon } from './getIcon';
 
 interface TabIconProps {
@@ -14,6 +17,7 @@ interface TabIconProps {
           }) => React.ReactNode);
     onPress: () => void;
     onLongPress: () => void;
+    options: BottomTabNavigationOptions;
 }
 
 const TabIcon: React.FC<TabIconProps> = ({
@@ -21,10 +25,18 @@ const TabIcon: React.FC<TabIconProps> = ({
     label,
     onLongPress,
     onPress,
+    options,
 }: TabIconProps) => {
     return (
         <Pressable
             accessibilityRole="button"
+            accessibilityState={
+                isFocused ? { selected: true } : {}
+            }
+            accessibilityLabel={
+                options.tabBarAccessibilityLabel
+            }
+            testID={options.tabBarTestID}
             cursor="pointer"
             opacity={isFocused ? 1 : 0.5}
             py="3"

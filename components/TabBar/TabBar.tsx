@@ -56,6 +56,7 @@ const TabBar = ({
                         label={label}
                         onLongPress={onLongPress}
                         onPress={onPress}
+                        options={options}
                     />
                 );
             })}
