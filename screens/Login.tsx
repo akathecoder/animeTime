@@ -13,18 +13,19 @@ import { logo } from '../utilities/images';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
+import { getAccessTokenFromResponse } from '../utilities/getAccessTokenFromURL';
 
 const Login = () => {
-    const [result, setResult] = useState<string>('');
+    const [result, setResult] = useState<string>(
+        Linking.createURL('/'),
+    );
 
     const _openAuthSessionAsync = async () => {
         try {
             let requiredResult =
                 await WebBrowser.openAuthSessionAsync(
-                    `https://backend-xxswjknyfi.now.sh/?linkingUri=${Linking.createURL(
-                        '/?',
-                    )}`,
-                    '',
+                    'https://anilist.co/api/v2/oauth/authorize?client_id=6613&response_type=token',
+                    Linking.createURL('/'),
                 );
 
             setResult(JSON.stringify(requiredResult));
@@ -70,7 +71,9 @@ const Login = () => {
                     Login with AniList
                 </Button>
 
-                <Text mt={2}>{result}</Text>
+                <Text mt={2} size="xs">
+                    {getAccessTokenFromResponse(result)}
+                </Text>
             </Center>
 
             <StatusBar style="auto" />
