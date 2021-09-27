@@ -12,10 +12,13 @@ export default function App() {
         <NativeBaseProvider>
             <NavigationContainer>
                 <Stack.Navigator>
-                    {false ? (
+                    {true ? (
                         <Stack.Screen
                             name="SignIn"
                             component={Login}
+                            options={{
+                                headerShown: false,
+                            }}
                         />
                     ) : (
                         <Stack.Screen
