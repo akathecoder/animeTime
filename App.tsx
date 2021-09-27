@@ -1,49 +1,32 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NativeBaseProvider } from 'native-base';
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './screens/Login';
 import Home from './screens/Home';
-import Search from './screens/Search';
-import Settings from './screens/Settings';
-import TabBar from './components/TabBar';
 
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
         <NativeBaseProvider>
             <NavigationContainer>
-                <Tab.Navigator
-                    initialRouteName="Home"
-                    tabBar={(props) => (
-                        <TabBar {...props} />
+                <Stack.Navigator>
+                    {false ? (
+                        <Stack.Screen
+                            name="SignIn"
+                            component={Login}
+                        />
+                    ) : (
+                        <Stack.Screen
+                            name="Home"
+                            component={Home}
+                            options={{
+                                headerShown: false,
+                            }}
+                        />
                     )}
-                >
-                    <Tab.Screen
-                        name="Home"
-                        component={Home}
-                        options={{
-                            headerShown: false,
-                        }}
-                    />
-
-                    <Tab.Screen
-                        name="Search"
-                        component={Search}
-                        options={{
-                            headerShown: false,
-                        }}
-                    />
-
-                    <Tab.Screen
-                        name="Settings"
-                        component={Settings}
-                        options={{
-                            headerShown: false,
-                        }}
-                    />
-                </Tab.Navigator>
+                </Stack.Navigator>
             </NavigationContainer>
         </NativeBaseProvider>
     );

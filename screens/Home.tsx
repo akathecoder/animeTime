@@ -1,24 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import {
-    Box,
-    Heading,
-    ScrollView,
-    Text,
-} from 'native-base';
 import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import TabBar from '../components/TabBar';
+import Search from './Search';
+import Settings from './Settings';
+import Favourite from './Favourite';
 
-export default function Home() {
+const Tab = createBottomTabNavigator();
+
+const Home = () => {
     return (
-        <Box flex={1} safeArea px={5} py={3}>
-            <ScrollView flex={1}>
-                <Heading size="md">
-                    Currently Watching
-                </Heading>
+        <Tab.Navigator
+            initialRouteName="Home"
+            tabBar={(props) => <TabBar {...props} />}
+        >
+            <Tab.Screen
+                name="Favourite"
+                component={Favourite}
+                options={{
+                    headerShown: false,
+                }}
+            />
 
-                {/* TODO: Add Boxes */}
-            </ScrollView>
+            <Tab.Screen
+                name="Search"
+                component={Search}
+                options={{
+                    headerShown: false,
+                }}
+            />
 
-            <StatusBar style="auto" />
-        </Box>
+            <Tab.Screen
+                name="Settings"
+                component={Settings}
+                options={{
+                    headerShown: false,
+                }}
+            />
+        </Tab.Navigator>
     );
-}
+};
+
+export default Home;
