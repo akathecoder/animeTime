@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HomeIcon from './HomeIcon';
+import FavouriteIcon from './FavouriteIcon';
 import SearchIcon from './SearchIcon';
 import SettingsIcon from './SettingsIcon';
 
@@ -9,8 +9,8 @@ export const getIcon = (
     isFocused: boolean,
 ) => {
     switch (label) {
-        case 'Home':
-            return <HomeIcon focused={isFocused} />;
+        case 'Favourite':
+            return <FavouriteIcon focused={isFocused} />;
 
         case 'Search':
             return <SearchIcon focused={isFocused} />;
