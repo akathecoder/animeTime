@@ -14,6 +14,10 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
 import { getAccessTokenFromResponse } from '../utilities/getAccessTokenFromURL';
+import {
+    ANILIST_API_ENDPOINT,
+    ANILIST_CLIENT_ID,
+} from '@env';
 
 const Login = () => {
     const [result, setResult] = useState<string>(
@@ -24,7 +28,7 @@ const Login = () => {
         try {
             let requiredResult =
                 await WebBrowser.openAuthSessionAsync(
-                    'https://anilist.co/api/v2/oauth/authorize?client_id=6613&response_type=token',
+                    `${ANILIST_API_ENDPOINT}/oauth/authorize?client_id=${ANILIST_CLIENT_ID}&response_type=token`,
                     Linking.createURL('/'),
                 );
 
